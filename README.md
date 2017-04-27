@@ -1,6 +1,6 @@
 # rtd-example
 
-This is a gamemode to showcase the -rtd command that you can put into
+This is a gamemode to showcase the rtd command that you can put into
 your mods. [RTD](https://forums.alliedmods.net/showthread.php?p=849987) is a common command in counter-strike gamemodes that 
 lets players "roll-the-dice" (with a cooldown) to get random modifiers
 like 15 seconds invunerability, max gold, negative gold, instant death,
@@ -197,5 +197,5 @@ addon_english.txt
 rollthedice.lua respects:
 
 ```lua
-RTD_COOLDOWN = 60 -- cooldown between using -rtd
+RTD_COOLDOWN = 60 -- cooldown between using rtd
 ```
