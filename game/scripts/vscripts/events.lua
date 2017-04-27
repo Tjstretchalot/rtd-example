@@ -335,4 +335,6 @@ function GameMode:OnPlayerChat(keys)
   local playerID = self.vUserIds[userID]:GetPlayerID()
 
   local text = keys.text
+  
+  rollthedice:OnPlayerChat( keys )
 end

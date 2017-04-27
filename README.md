@@ -10,12 +10,12 @@ like 15 seconds invunerability, max gold, negative gold, instant death,
 
 To install rtd in your gamemode:
 
-- copy [rollthedice.lua](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/libraries/rollthedice.lua)
+- Copy [rollthedice.lua](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/libraries/rollthedice.lua)
 into your game/scripts/vscripts/libraries folder 
-- copy [game/scripts/vscripts/lua_rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/lua_rtd/) to the same spot in your gamemode
-- copy [game/scripts/rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/rtd/) to the same spot in your gamemode
+- Copy [game/scripts/vscripts/lua_rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/lua_rtd/) to the same spot in your gamemode
+- Copy [game/scripts/rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/rtd/) to the same spot in your gamemode
 
-- In addon_game_mode.lua initialize it with
+- In addon_game_mode.lua initialize it with the following BEFORE require('events.lua')
 
     require ('libraries/rollthedice')
     
@@ -42,7 +42,7 @@ This file maps rolls to their respective results. Rolls are between 1 and 99 (in
   {
     "01" "rtd_nothing"
     "02" "rtd_nothing"
-    <omitted>
+    ..omitted..
     "98" "rtd_nothing"
     "99" "rtd_nothing"
   }
@@ -165,3 +165,28 @@ Example:
   }
 }
 </pre>
+
+## Localization
+
+When a player rolls a specific result, the thing printed to everyone on the left menu (as if via SendCustomMessage) can 
+be localized with the name of the modifier. The message will always be prefixed with the name of the player.
+
+There are also a few other self-explanatory options:
+
+addon_english.txt
+```
+"lang"
+{
+  "Language" "English"
+  "Tokens"
+  {
+    "DOTA_Tooltip_modifier_rtd_timer" "RTD Timer"
+    "DOTA_Tooltip_modifier_rtd_timer_Description" "Prevents using RTD"
+    
+    "rtd_alert_too_soon" "You can't do that yet! Wait until the buff wears off."
+    
+    "rtd_example" " won <b>IMMINENT DEATH</b>!"
+  }
+}
+```
+
