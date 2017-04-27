@@ -1,0 +1,8 @@
+"RollTheDice"
+{
+  "rtd_nothing"
+  {
+    // General
+    "BaseClass" "rtd_datadriven" // rtd_datadriven or rtd_lua
+  }
+}
