@@ -10,19 +10,19 @@ like 15 seconds invunerability, max gold, negative gold, instant death,
 
 To install rtd in your gamemode:
 
-- Copy [rollthedice.lua](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/libraries/rollthedice.lua)
+- Copy [rollthedice/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/libraries/rollthedice/)
 into your game/scripts/vscripts/libraries folder 
 - Copy [game/scripts/vscripts/lua_rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/lua_rtd/) to the same spot in your gamemode
 - Copy [game/scripts/rtd/](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/rtd/) to the same spot in your gamemode
-
+- Copy [game/resource/flash3/images/spellicons/holdout_guardian_angel](https://github.com/Tjstretchalot/rtd-example/blob/master/game/resource/flash3/images/spellicons/holdout_guardian_angel.png) to the same spot in your gamemode. This is the texture for the RTD buff.
 - In addon_game_mode.lua initialize it with the following BEFORE require('events.lua')
 
-    require ('libraries/rollthedice')
+    require ('libraries/rollthedice/rollthedice')
     
 - In [events.lua](https://github.com/Tjstretchalot/rtd-example/blob/master/game/scripts/vscripts/events.lua) under GameMode:OnPlayerChat(keys)
 call 
 
-    rollthedice:OnPlayerChat(keys)
+    rollthedice:OnPlayerChat(keys, playerID)
 
 and rollthedice will take care of the rest!
 
@@ -119,7 +119,7 @@ function rtd_example:OnCreated( keys )
   local playerid = keys.playerid
   local hero = PlayerResource:GetSelectedHeroEntity( playerid )
   
-  hero:AddNewModifier( hero, nil, 'modifier_kill', { Duration: self:GetSpecialValueFor('duration') } )
+  hero:AddNewModifier( hero, nil, 'modifier_kill', { Duration = self:GetSpecialValueFor('duration') } )
 end
 ```
 
@@ -183,10 +183,19 @@ addon_english.txt
     "DOTA_Tooltip_modifier_rtd_timer" "RTD Timer"
     "DOTA_Tooltip_modifier_rtd_timer_Description" "Prevents using RTD"
     
-    "rtd_alert_too_soon" "You can't do that yet! Wait until the buff wears off."
+    "rtd_alert_too_soon" "[RTD] You can't do that yet! Wait until the buff wears off."
+    "rtd_alert_dead" "[RTD] You can only roll the dice while alive."
+    "rtd_alert_no_selected_hero" "[RTD] You must have a hero selected to roll the dice."
     
-    "rtd_example" " won <b>IMMINENT DEATH</b>!"
+    "rtd_example" "[RTD] You won <b>IMMINENT DEATH</b>!"
   }
 }
 ```
 
+## Settings
+
+rollthedice.lua respects:
+
+```lua
+RTD_COOLDOWN = 60 -- cooldown between using -rtd
+```

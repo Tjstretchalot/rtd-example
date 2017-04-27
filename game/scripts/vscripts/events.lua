@@ -336,5 +336,5 @@ function GameMode:OnPlayerChat(keys)
 
   local text = keys.text
   
-  rollthedice:OnPlayerChat( keys )
+  rollthedice:OnPlayerChat( keys, playerID )
 end

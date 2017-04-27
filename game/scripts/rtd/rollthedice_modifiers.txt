@@ -2,7 +2,53 @@
 {
   "rtd_nothing"
   {
-    // General
+    "BaseClass" "rtd_datadriven"
+  }
+  
+  "rtd_death_datadriven"
+  {
     "BaseClass" "rtd_datadriven" // rtd_datadriven or rtd_lua
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type" "FIELD_INTEGER"
+        "duration" "10"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "01"
+      {
+        "OnCreated"
+        {
+          "ApplyModifier"
+          {
+            "ModifierName" "modifier_kill" // As if you were using AddNewModifier
+            "Data" // This is passed as modifierData to AddNewModifier
+            {
+              "Duration" "%duration"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  "rtd_death_lua"
+  {
+    "BaseClass" "rtd_lua"
+    "ScriptFile" "scripts/vscripts/lua_rtd/rtd_death_lua.lua"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type" "FIELD_INTEGER"
+        "duration" "10"
+      }
+    }
   }
 }

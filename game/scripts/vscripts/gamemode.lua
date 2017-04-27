@@ -40,7 +40,7 @@ require('internal/events')
 -- settings.lua is where you can specify many different properties for your game mode and is one of the core barebones files.
 require('settings')
 -- rollthedice.lua adds the -rtd command. Must be defined before events or also included in events.
-require('rollthedice')
+require('libraries/rollthedice/rollthedice')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
 
@@ -107,8 +107,8 @@ function GameMode:OnHeroInGame(hero)
   --hero:SetGold(500, false)
 
   -- These lines will create an item and add it to the player, effectively ensuring they start with the item
-  local item = CreateItem("item_example_item", hero, hero)
-  hero:AddItem(item)
+  --local item = CreateItem("item_example_item", hero, hero)
+  --hero:AddItem(item)
 
   --[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
     --with the "example_ability" ability
